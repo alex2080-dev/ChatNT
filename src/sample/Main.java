@@ -6,9 +6,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javax.imageio.IIOException;
 
+import javafx.scene.input.KeyEvent;
+import javafx.event.EventHandler;
+import java.awt.Robot;
+import java.awt.event.InputEvent;
+
 
 
 public class Main extends Application {
+
+    Controller controller = new Controller();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -18,10 +25,12 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
 
-        Controller controller = new Controller();
+      //  Controller controller = new Controller();
 
         primaryStage.setTitle("ChatNT");
-        primaryStage.setScene(new Scene(loader.load()));
+        Scene scene = new Scene(loader.load());
+
+        primaryStage.setScene(scene);
         primaryStage.show();
 
         loader.setController(controller);
@@ -34,6 +43,7 @@ public class Main extends Application {
         }
 
     }
+
 
    @Override
    public void init() throws Exception {
@@ -50,6 +60,7 @@ public class Main extends Application {
     public static void main(String[] args) {
 
         launch(args);
+
 
     }
 }

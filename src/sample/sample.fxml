@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#sendingMessage" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <Button fx:id="sendMessageButton" layoutX="474.0" layoutY="336.0" mnemonicParsing="false" onMouseClicked="#sendingMessage" onMouseDragReleased="#sendingMessage" prefHeight="41.0" prefWidth="91.0" text="Send" />
-      <TextArea fx:id="chatArea" layoutX="128.0" layoutY="14.0" prefHeight="268.0" prefWidth="463.0" />
-      <TextField fx:id="messageArea" layoutX="128.0" layoutY="295.0" prefHeight="25.0" prefWidth="463.0" />
+      <TextArea fx:id="chatArea" editable="false" layoutX="128.0" layoutY="14.0" prefHeight="268.0" prefWidth="463.0" wrapText="true">
+         <cursor>
+            <Cursor fx:constant="DISAPPEAR" />
+         </cursor></TextArea>
+      <TextField fx:id="messageArea" layoutX="128.0" layoutY="295.0" onKeyTyped="#Entering" prefHeight="25.0" prefWidth="463.0" />
    </children>
 </AnchorPane>
