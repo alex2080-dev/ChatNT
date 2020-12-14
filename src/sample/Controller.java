@@ -38,8 +38,6 @@ public class Controller {
     }
 
 
-
-
 }
 
     public void Entering(KeyEvent keyEvent) {
