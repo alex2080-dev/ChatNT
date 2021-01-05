@@ -19,7 +19,6 @@ public class Box<T extends Fruit> {
         for (T fruit : fruits) {
             weight += fruit.getWeight();
         }
-
         return weight;
     }
 
