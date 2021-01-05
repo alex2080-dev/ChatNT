@@ -13,7 +13,6 @@ public class TestBoxing {
         Orange o2 = new Orange();
         Orange o3 = new Orange();
 
-
         Box<Apple> box1 = new Box<>();
         Box<Orange> box2 = new Box<>();
         Box<?> box3 = new Box<>();

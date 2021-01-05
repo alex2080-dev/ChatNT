@@ -10,7 +10,6 @@ public class Box<T extends Fruit> {
 
     public ArrayList<T> getlist(){
         return fruits;
-
     }
 
 
