@@ -5,11 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javax.imageio.IIOException;
-
-import javafx.scene.input.KeyEvent;
-import javafx.event.EventHandler;
-import java.awt.Robot;
-import java.awt.event.InputEvent;
 import java.io.IOException;
 
 
@@ -42,7 +37,7 @@ public class Main extends Application {
             Controller controller = loader.getController();
             controller.setNetwork(network);
 
-            network.sendMessage("ping server");
+            network.sendMessage("Сервер на связи");
 
             network.waitMessages(controller);
 

@@ -1,6 +1,6 @@
 package sample;
 
-import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -9,7 +9,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
-import java.security.spec.EncodedKeySpec;
 
 public class Controller {
 
@@ -19,7 +18,7 @@ public class Controller {
     public TextArea chatArea;
 
     private Network network;
-@FXML
+    @FXML
     public Button sendMessageButton;
     public AnchorPane pane;
 

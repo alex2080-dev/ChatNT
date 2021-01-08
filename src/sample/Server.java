@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Server {
     
    private static final int PORT_CONNECTION = 8189;
-    public static Scanner scanner = new Scanner(System.in);
+   public static Scanner scanner = new Scanner(System.in);
    
    public static void main (String[]  args)
    {
@@ -24,7 +24,7 @@ public class Server {
            out.writeUTF("Connection OK");
 
            while (true) {
-               System.out.println("...");
+               System.out.println("Клиент подключен");
 
                String messageI = in.readUTF();
                System.out.println(messageI);

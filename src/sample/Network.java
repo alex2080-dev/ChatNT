@@ -1,7 +1,6 @@
 package sample;
 
 import javafx.application.Platform;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -15,10 +14,6 @@ public class Network {
 
  private int port = 8189;
 
-
-    public Network() {
-        this.port = port;
-    }
 
     public boolean connect() {
         try
