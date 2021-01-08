@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.security.spec.EncodedKeySpec;
 
 public class Controller {
@@ -17,18 +18,24 @@ public class Controller {
     public TextField messageArea;
     public TextArea chatArea;
 
+    private Network network;
 @FXML
     public Button sendMessageButton;
     public AnchorPane pane;
 
 
     @FXML
-    public void sendingMessage() {
+    public void sendingMessage() throws IOException {
 
         // Если поле сообщения не пусто - отправляем сообщение в чат, если пусто - приходит сообщение от собеседника
     if (!messageArea.getText().equals("")) {
 
         chatArea.setText(chatArea.getText() + System.lineSeparator() + System.lineSeparator() + "Я:" + System.lineSeparator() +messageArea.getText());
+        try {
+            network.sendMessage(messageArea.getText());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         messageArea.clear();
         chatArea.positionCaret(chatArea.getText().length());
 
@@ -40,7 +47,13 @@ public class Controller {
 
 }
 
-    public void Entering(KeyEvent keyEvent) {
+    public void setNetwork(Network network) {
+        this.network = network;
+    }
+
+
+
+    public void Entering(KeyEvent keyEvent) throws IOException {
 
         if (keyEvent.getCode().getName().equals("Enter")) {
 
@@ -50,6 +63,12 @@ public class Controller {
         }
 
     }
+
+    public void appendMessage(String message) {
+        chatArea.appendText(message);
+        chatArea.appendText(System.lineSeparator());
+    }
+
 }
 
 
