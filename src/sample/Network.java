@@ -58,7 +58,6 @@ public class Network {
         thread.setDaemon(true);
         thread.start();
 
-
     }
 
     public synchronized void sendMessage(String message) throws IOException {
