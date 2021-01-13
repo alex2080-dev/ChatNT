@@ -37,8 +37,6 @@ public class Main extends Application {
             Controller controller = loader.getController();
             controller.setNetwork(network);
 
-            network.sendMessage("Сервер на связи");
-
             network.waitMessages(controller);
 
             primaryStage.setOnCloseRequest(event -> {

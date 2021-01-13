@@ -24,23 +24,21 @@ public class Controller {
 
 
     @FXML
-    public void sendingMessage() throws IOException {
+    public synchronized void sendingMessage() throws IOException {
 
         // Если поле сообщения не пусто - отправляем сообщение в чат, если пусто - приходит сообщение от собеседника
     if (!messageArea.getText().equals("")) {
 
-        chatArea.setText(chatArea.getText() + System.lineSeparator() + System.lineSeparator() + "Я:" + System.lineSeparator() +messageArea.getText());
-        try {
-            network.sendMessage(messageArea.getText());
+        chatArea.setText(chatArea.getText() + System.lineSeparator()  + "Я: " +messageArea.getText() + System.lineSeparator());
+        network.sendMessage(messageArea.getText());
+/*        try {
+
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
         messageArea.clear();
         chatArea.positionCaret(chatArea.getText().length());
 
-    } else {
-        chatArea.setText(chatArea.getText() + System.lineSeparator() + System.lineSeparator() + "Собеседник:" + System.lineSeparator() + "Привет");
-        chatArea.positionCaret(chatArea.getText().length());
     }
 
 
@@ -52,7 +50,7 @@ public class Controller {
 
 
 
-    public void Entering(KeyEvent keyEvent) throws IOException {
+    public synchronized void Entering(KeyEvent keyEvent) throws IOException {
 
         if (keyEvent.getCode().getName().equals("Enter")) {
 
@@ -63,7 +61,8 @@ public class Controller {
 
     }
 
-    public void appendMessage(String message) {
+    public synchronized void appendMessage(String message) {
+        chatArea.appendText(System.lineSeparator());
         chatArea.appendText(message);
         chatArea.appendText(System.lineSeparator());
     }
