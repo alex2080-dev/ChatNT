@@ -55,8 +55,6 @@ public class Controller {
         if (keyEvent.getCode().getName().equals("Enter")) {
 
             sendingMessage();
-
-
         }
 
     }
