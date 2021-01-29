@@ -5,17 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javax.imageio.IIOException;
-
-import javafx.scene.input.KeyEvent;
-import javafx.event.EventHandler;
-import java.awt.Robot;
-import java.awt.event.InputEvent;
-
+import java.io.IOException;
 
 
 public class Main extends Application {
 
     Controller controller = new Controller();
+    private Network network;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -25,7 +21,7 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
 
-      //  Controller controller = new Controller();
+
 
         primaryStage.setTitle("ChatNT");
         Scene scene = new Scene(loader.load());
@@ -33,7 +29,24 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        loader.setController(controller);
+            Network network = new Network();
+            if (!network.connect()) {
+                System.out.println("Failed to connect to server");
+            }
+
+            Controller controller = loader.getController();
+            controller.setNetwork(network);
+
+            network.waitMessages(controller);
+
+            primaryStage.setOnCloseRequest(event -> {
+                try {
+                    network.sendMessage("///");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                network.close();
+            });
 
         }
 
@@ -59,6 +72,7 @@ public class Main extends Application {
     public static void main(String[] args) {
 
         launch(args);
+
 
 
     }
